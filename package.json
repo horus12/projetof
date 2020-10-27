@@ -1,0 +1,30 @@
+{
+  "name": "projetof",
+  "version": "1.0.0",
+  "description": "api to project f",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horus12/projetof.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "GABRIEL TALLES LOPES",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horus12/projetof/issues"
+  },
+  "homepage": "https://github.com/horus12/projetof#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11"
+  }
+}
