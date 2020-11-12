@@ -1,30 +1,37 @@
 'use strict';
 
-const { syncIndexes } = require('../domain/user');
+const {syncIndexes} = require('../domain/user');
 
-var mongoose = require('mongoose'),
-User = mongoose.model('user');
+const mongoose = require('mongoose'), User = mongoose.model('user');
+const bcrypt = require('bcrypt');
 
+exports.createUserUseCase = (req, res) => {
 
-exports.createUserUseCase = function(req, res) {
+    User.findOne({'name': req.body.name})
+        .then(user => {
 
-    
-    User.findOne({name:req.body.name}, function(err,user){
-        console.log(user)
-        if(err)
-            res.send(err);
-        if(user.name === req.body.name){
-            res.status(400).send("user already exist");
-            return
-        }
-        
-    });
+            if (user) {
+                res.status(403).json({success: false, message: 'This username has no available'});
+            } else {
+                bcrypt.hash(req.body.password, 10)
+                    .then(hash => {
 
-    var newUser = new User(req.body);
-    newUser.save(function(err, user) {
-      if (err)
-        res.send(err);
-      res.status(200).send("User created")
-    });
+                        let encryptedPassword = hash;
+
+                        let newUser = new User({
+                            name: req.body.name,
+                            password: encryptedPassword
+                        });
+
+                        newUser.save()
+                            .then(() => res.status(201).json({
+                                success: true,
+                                message: 'User created with success'
+                            }))
+                            .catch(err => res.status(500).json({success: false, message: err, statusCode: 500}));
+                    })
+                    .catch(err => res.status(500).json({success: false, message: err, statusCode: 500}));
+            }
+        })
 
 }
