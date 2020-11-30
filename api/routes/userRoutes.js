@@ -8,6 +8,9 @@ module.exports = function(app) {
 
   app.route('/login')
       .post(userController.login);
+
+  app.route('/research')
+      .post(userController.createResearch)
     
 };
   

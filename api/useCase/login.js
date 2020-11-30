@@ -16,7 +16,7 @@ exports.login = (req, res) => {
                     } else if (!isMatch) {
                         res.status(403).json({success: false, message: "wrong password or username"});
                     } else {
-                        res.status(200).json({success: true, accessToken: user.id});
+                        res.status(200).json({success: true, accessToken: user.cpf});
                     }
                 })
 
