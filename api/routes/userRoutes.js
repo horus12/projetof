@@ -1,9 +1,13 @@
 'use strict';
 module.exports = function(app) {
-  var userController = require('../controller/userController');
+  const userController = require('../controller/userController');
 
   // user Routes
   app.route('/user')
-    .post(userController.createUser);
+      .post(userController.createUser);
+
+  app.route('/login')
+      .post(userController.login);
     
 };
+  

@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 
 exports.createUserUseCase = (req, res) => {
 
-    User.findOne({'name': req.body.name})
+    User.findOne({'email': req.body.email})
         .then(user => {
 
             if (user) {
@@ -19,8 +19,9 @@ exports.createUserUseCase = (req, res) => {
                         let encryptedPassword = hash;
 
                         let newUser = new User({
-                            name: req.body.name,
-                            password: encryptedPassword
+                            email: req.body.email,
+                            password: encryptedPassword,
+                            cpf: req.body.cpf
                         });
 
                         newUser.save()
