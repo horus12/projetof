@@ -14,7 +14,8 @@ let research = new Schema({
         title: {type: String, required: 'needs a title this question'},
         description: {type: String},
         type: {type: String, required: 'needs a type of question'},
-        required: {type: Boolean, required: 'needs required true or false'}
+        required: {type: Boolean, required: 'needs required true or false'},
+        choices:[{type:String}]
     }],
     createdDate:{type: Date},
     endDate:{type:Date},

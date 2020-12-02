@@ -22,10 +22,14 @@
   "homepage": "https://github.com/horus12/projetof#readme",
   "devDependencies": {
     "bcrypt": "^5.0.0",
+    "handlebars": "^4.7.6",
+    "nodemailer": "^6.4.16",
+    "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "gmail-send": "^1.8.10",
     "mongoose": "^5.10.11"
   }
 }

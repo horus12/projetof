@@ -1,5 +1,6 @@
 'use strict';
 
+const sendEmail = require('./sendEmail');
 let findUser = require('../useCase/findUser');
 const {isNullOrUndefined} = require('mongoose')
 
@@ -25,6 +26,7 @@ exports.createResearch =  (req, res) => {
                     endDate: new Date(),
                     active: aux.active
                 });
+                sendEmail.sendEmail(aux.participants,aux.title)
 
                 research.save()
                     .then(() => res.status(201).json({
