@@ -15,14 +15,14 @@ app.use(function (req, res, next) {
 
 (port = process.env.PORT || 3000),
   (mongoose = require("mongoose")),
-  (User = require("./api/domain/user")), //created model loading here
+  (User = require("./api/domain/user")),
   (Research = require("./api/domain/research")),
   (bodyParser = require("body-parser"));
 
-// mongoose instance connection url connection
+
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  "mongodb+srv://admin:admin@cluster0.sme94.mongodb.net/Cluster0?retryWrites=true&w=majority"
+  "mongodb://localhost/projetoF"
 );
 
 app.use(bodyParser.urlencoded({ extended: true }));

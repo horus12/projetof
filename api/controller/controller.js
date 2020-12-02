@@ -23,5 +23,9 @@ exports.createResearch = function (req, res) {
 };
 
 exports.getResearch = function(req,res){
-    getResearch.getResearch(req,res)
+    getResearch.getResearch(req, res)
+};
+
+exports.getResearchById = function(req,res){
+    getResearch.getResearchById(req,res)
 };

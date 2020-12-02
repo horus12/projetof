@@ -13,6 +13,7 @@ module.exports = function(app) {
       .post(controller.createResearch)
       .get(controller.getResearch)
 
-    
+  app.route('/research/:researchId')
+      .get(controller.getResearchById)
 };
   
