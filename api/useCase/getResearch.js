@@ -39,12 +39,12 @@ exports.getResearchById = async (req, res) => {
 }
 
 exports.addNewParticipants = async (req, res) => {
-    Research.findById(req.params.researchId)
+    Research.findById(req.body.researchId)
         .then(research => {
             if (research) {
-                sendEmail.sendEmail(req.participants,research.title)
-                research.participants = research.participants.concat(req.participants)
-                Research.findByIdAndUpdate(req.params.researchId,research)
+                sendEmail.sendEmail(req.body.participants,research.title)
+                research.participants = research.participants.concat(req.body.participants)
+                Research.findByIdAndUpdate(req.body.researchId,research)
                 res.status(200).json({success: true, body: research, statusCode: 200})
             } else
                 res.status(404).json({success: false, message: "not found this research to add new participants", statusCode: 404})
