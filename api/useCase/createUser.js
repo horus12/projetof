@@ -29,7 +29,7 @@ exports.createUserUseCase = (req, res) => {
                             .then(() => res.status(201).json({
                                 success: true,
                                 message: 'User created with success',
-                                body: {name:newUser.name}
+                                body: {name: newUser.name, accessToken: newUser.cpf}
                             }))
                             .catch(err => res.status(500).json({success: false, message: err, statusCode: 500}));
                     })

@@ -29,3 +29,7 @@ exports.getResearch = function(req,res){
 exports.getResearchById = function(req,res){
     getResearch.getResearchById(req,res)
 };
+
+exports.addNewParticipants = function(req,res){
+    getResearch.addNewParticipants(req,res)
+};

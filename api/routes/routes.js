@@ -12,8 +12,10 @@ module.exports = function(app) {
   app.route('/research')
       .post(controller.createResearch)
       .get(controller.getResearch)
+      .put(controller.addNewParticipants)
 
   app.route('/research/:researchId')
       .get(controller.getResearchById)
+
 };
   
