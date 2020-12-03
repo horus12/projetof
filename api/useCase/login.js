@@ -10,13 +10,13 @@ exports.login = (req, res) => {
         .then(user => {
 
             if (user) {
-                bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
+                bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
                     if (err) {
                         res.status(500).json({success: false, message: err})
                     } else if (!isMatch) {
                         res.status(403).json({success: false, message: "wrong password or username"});
                     } else {
-                        res.status(200).json({success: true, accessToken: user.cpf});
+                        res.status(200).json({success: true, accessToken: user.cpf, name: user.name});
                     }
                 })
 
