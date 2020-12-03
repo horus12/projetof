@@ -17,8 +17,8 @@ let user = new Schema({
         type: String,
         required: 'needs a password',
         unique: true
-
-    }
+    },
+    name: {type: String, required: 'needs a name'}
 
 });
 

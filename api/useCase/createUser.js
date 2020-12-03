@@ -21,13 +21,15 @@ exports.createUserUseCase = (req, res) => {
                         let newUser = new User({
                             email: req.body.email,
                             password: encryptedPassword,
-                            cpf: req.body.cpf
+                            cpf: req.body.cpf,
+                            name: req.body.name
                         });
 
                         newUser.save()
                             .then(() => res.status(201).json({
                                 success: true,
-                                message: 'User created with success'
+                                message: 'User created with success',
+                                body: {name:newUser.name}
                             }))
                             .catch(err => res.status(500).json({success: false, message: err, statusCode: 500}));
                     })
